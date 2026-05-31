@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamuuuu 🩵🩵</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background:linear-gradient(135deg,#ffe0ef,#fff5dd,#dff5ff);
+position:relative;
+padding:20px;
+}
+
+.container{
+text-align:center;
+max-width:600px;
+width:100%;
+z-index:2;
+}
+
+h1{
+color:#ff5f9a;
+font-size:clamp(2rem,5vw,3.5rem);
+margin-bottom:20px;
+text-shadow:0 5px 15px rgba(255,95,154,.2);
+}
+
+.bouquet{
+width:min(300px,70vw);
+animation:floatBouquet 4s ease-in-out infinite;
+filter:drop-shadow(0 15px 20px rgba(0,0,0,.15));
+margin-bottom:20px;
+}
+
+@keyframes floatBouquet{
+0%,100%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-15px);
+}
+}
+
+.btn{
+border:none;
+padding:14px 26px;
+border-radius:999px;
+cursor:pointer;
+font-size:16px;
+font-weight:600;
+transition:.3s;
+margin:8px;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.love-btn{
+background:#ff6ea7;
+color:white;
+box-shadow:0 10px 25px rgba(255,110,167,.3);
+}
+
+.music-btn{
+background:#aee6ff;
+color:#1e4c67;
+box-shadow:0 10px 25px rgba(174,230,255,.3);
+}
+
+.card{
+display:none;
+margin-top:20px;
+background:rgba(255,255,255,.92);
+padding:25px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+animation:showCard .6s ease;
+}
+
+@keyframes showCard{
+from{
+opacity:0;
+transform:translateY(25px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.card p{
+font-size:18px;
+line-height:1.8;
+color:#666;
+}
+
+.float-item{
+position:fixed;
+pointer-events:none;
+animation:rise 8s linear forwards;
+z-index:1;
+}
+
+@keyframes rise{
+from{
+transform:translateY(110vh);
+opacity:1;
+}
+to{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+
+.glow{
+position:absolute;
+width:300px;
+height:300px;
+border-radius:50%;
+background:radial-gradient(circle,#ffd3e7,transparent);
+filter:blur(50px);
+z-index:0;
+}
+
+.glow2{
+background:radial-gradient(circle,#bcecff,transparent);
+right:10%;
+bottom:10%;
+}
+
+.glow1{
+left:10%;
+top:10%;
+}
+
+.footer{
+margin-top:15px;
+font-size:14px;
+color:#999;
+}
+</style>
+</head>
+<body>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<div class="container">
+
+<h1>Untuk Kamuuuu 🩵🩵</h1>
+
+<img src="bouquet.png" class="bouquet" id="bouquet">
+
+<br>
+
+<button class="btn love-btn" id="loveBtn">
+klikk donggggg
+</button>
+
+<div class="card" id="card">
+
+<p>
+ini bucket flower virtuallll, heheheh 🩵
+<br><br>
+yang asli ntar duluu yaaaaaaaa.
+<br>
+ditunggu ajaaaaaa 💐✨
+</p>
+
+<button class="btn music-btn" id="musicBtn">
+🎵 puter lagu gaa???
+</button>
+
+</div>
+
+<div class="footer">
+dibuat khusus buat kamuuuu 🩵
+</div>
+
+<audio id="music">
+<source src="ReelAudio-5820.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<script>
+
+const loveBtn =
+document.getElementById("loveBtn");
+
+const card =
+document.getElementById("card");
+
+const bouquet =
+document.getElementById("bouquet");
+
+let opened = false;
+
+loveBtn.addEventListener("click",()=>{
+
+card.style.display="block";
+
+bouquet.animate([
+{transform:'translateY(0px) rotate(0deg)'},
+{transform:'translateY(-10px) rotate(-4deg)'},
+{transform:'translateY(-15px) rotate(4deg)'},
+{transform:'translateY(0px) rotate(0deg)'}
+],{
+duration:800
+});
+
+if(!opened){
+
+loveBtn.innerHTML =
+"klikk donggggg (lagiiiii)";
+
+opened = true;
+
+launchMagic();
+
+}else{
+
+launchMagic();
+
+}
+
+});
+
+function launchMagic(){
+
+const items=[
+'🩵',
+'💖',
+'🌸',
+'✨',
+'💐'
+];
+
+for(let i=0;i<35;i++){
+
+const el =
+document.createElement('div');
+
+el.className='float-item';
+
+el.innerHTML=
+items[Math.floor(Math.random()*items.length)];
+
+el.style.left=
+Math.random()*100+'vw';
+
+el.style.fontSize=
+(20+Math.random()*20)+'px';
+
+document.body.appendChild(el);
+
+setTimeout(()=>{
+el.remove();
+},8000);
+
+}
+
+}
+
+const musicBtn =
+document.getElementById("musicBtn");
+
+const music =
+document.getElementById("music");
+
+let playing=false;
+
+musicBtn.addEventListener("click",()=>{
+
+if(!playing){
+
+music.play();
+
+musicBtn.innerHTML =
+"🎵 okeyyyyyyy 🩵";
+
+playing=true;
+
+}else{
+
+music.pause();
+music.currentTime=0;
+
+musicBtn.innerHTML =
+"🎵 puter lagu gaa???";
+
+playing=false;
+
+}
+
+});
+
+setInterval(()=>{
+
+const el =
+document.createElement('div');
+
+el.className='float-item';
+
+el.innerHTML=
+Math.random()>0.5?'🩵':'🌸';
+
+el.style.left=
+Math.random()*100+'vw';
+
+el.style.fontSize=
+(16+Math.random()*15)+'px';
+
+document.body.appendChild(el);
+
+setTimeout(()=>{
+el.remove();
+},8000);
+
+},1500);
+
+</script>
+
+</body>
+</html>
